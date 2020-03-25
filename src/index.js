@@ -1,17 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+const express = require('express');
+const cors = require('cors');
+const routes = require('./routes')
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const app = express();
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+app.use(cors());
+app.use(express.json());
+app.use(routes);
+
+/*
+    Rota / Recusos
+*/
+/*
+    Mtododos HTTP:
+        GET: Buscar/listar uma informação do backend
+        POST: Criar uma informação no backend
+        PUT: Alterar uma informação no backend
+        DELETE: Deletar uma informação no backend
+*/
+/*
+    Tipos de parâmetros:
+        Query Params: Parâmetros nomeados enviados na rota após "?" (Filtros, Paginação)
+        Route Params: Parâmetros utilizados para identificar recursos
+        Request Body: Corpo da requisição utilizado para criar ou alterar recursos
+*/
+
+app.listen(3333);
